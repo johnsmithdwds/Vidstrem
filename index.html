@@ -59,7 +59,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .thumb-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
 .video-card:hover .thumb-wrapper video{transform:scale(1.05);}
 
-.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity 0.3s;}
 .video-card:hover .thumb-overlay{opacity:1;}
 
 .play-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e53935,#ff6f43);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(229,57,53,0.4);}
@@ -168,6 +168,7 @@ const bannerAds=[
   {key:"5a85eefdcec57e9f07cd5bc7716dbc32",src:"https://www.highperformanceformat.com/5a85eefdcec57e9f07cd5bc7716dbc32/invoke.js"},
   {key:"ee8499a5180071632db56325b3d6519b",src:"https://www.highperformanceformat.com/ee8499a5180071632db56325b3d6519b/invoke.js"}
 ];
+const popunderScript="https://pl28878042.profitablecpmratenetwork.com/70/50/05/70500501f609bb875d73fdbe02156f35.js";
 
 function loadScript(src,parent,attrs){
   var s=document.createElement('script');s.src=src;s.async=true;
@@ -219,7 +220,7 @@ const durs=["4:32","12:05","8:17","22:41","6:55","15:30","18:22","35:10","9:48",
 const vws=["1.2M","890K","456K","2.3M","678K","345K","1.5M","3.1M","567K","789K","1.1M","234K"];
 
 const videoTitles={
-  trending:["Ridhi Sosa Apa Cox's Bazar Viral - videos", "Ocean Waves Relaxation 4K","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
+  trending:["Ridhi Sosa Apa Cox's Bazar Viral - HD","Ocean Waves Relaxation 4K","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
   entertainment:["Best Comedy Clips 2026","Movie Trailer Mashup","Celebrity Interview Highlights","Stand-Up Comedy Special","Behind The Scenes Blockbuster","Animated Short Film","Drama Series Recap","Reality Show Best Moments","Award Show Highlights","Viral TikTok Compilation","Prank Wars Episode 5","Magic Show Revealed"],
   music:["Top Hits Playlist 2026","Live Concert 4K","Guitar Tutorial Beginner","EDM Festival Highlights","Classical Piano Performance","Rap Freestyle Battle","K-Pop Dance Practice","Acoustic Cover Mashup","Beat Making Tutorial","Music Video Behind Scenes","Jazz Night Live","Vocal Training Tips"],
   gaming:["GTA 6 Gameplay Leaked","Minecraft Mega Build","Fortnite Pro Tips","Elden Ring Boss Fight","FIFA 26 Best Goals","Call of Duty Warzone","Pokemon New Generation","Speedrun World Record","Gaming Setup Tour","Esports Championship Final","Roblox Adventure Map","VR Gaming Experience"],
@@ -314,7 +315,7 @@ function renderVideos(list){
     } else {
       html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
       html+='<div class="thumb-wrapper" onclick="handleWatch('+v.id+')">';
-      html+='<video src="'+v.video+'" muted loop playsinline preload="metadata" onmouseenter="this.play().catch(function(){})" onmouseleave="this.pause();this.currentTime=0;"></video>';
+      html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata" onmouseenter="this.play().catch(function(){})" onmouseleave="this.pause();this.currentTime=0;"></video>';
       html+='<div class="thumb-overlay"><div class="play-btn">'+svgPlay+'</div></div>';
       html+='<span class="duration">'+v.duration+'</span>';
       html+='<span class="badge-watch '+(s.watchClicked?'show':'')+'">Click to Watch</span>';
@@ -395,4 +396,3 @@ renderVideos(allVideos[currentCat]);
 </script>
 </body>
 </html>
-
