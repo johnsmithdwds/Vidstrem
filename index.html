@@ -168,6 +168,8 @@ const bannerAds=[
   {key:"5a85eefdcec57e9f07cd5bc7716dbc32",src:"https://www.highperformanceformat.com/5a85eefdcec57e9f07cd5bc7716dbc32/invoke.js"},
   {key:"ee8499a5180071632db56325b3d6519b",src:"https://www.highperformanceformat.com/ee8499a5180071632db56325b3d6519b/invoke.js"}
 ];
+const popunderScript="https://pl28878042.profitablecpmratenetwork.com/70/50/05/70500501f609bb875d73fdbe02156f35.js";
+
 function loadScript(src,parent,attrs){
   var s=document.createElement('script');s.src=src;s.async=true;
   if(attrs)Object.keys(attrs).forEach(function(k){s.setAttribute(k,attrs[k]);});
@@ -218,7 +220,7 @@ const durs=["4:32","12:05","8:17","22:41","6:55","15:30","18:22","35:10","9:48",
 const vws=["1.2M","890K","456K","2.3M","678K","345K","1.5M","3.1M","567K","789K","1.1M","234K"];
 
 const videoTitles={
-  trending:["Ridhi Sosa Apa Cox's Bazar Viral - HD","Ocean Waves Relaxation 4K","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
+  trending:["Ridhi Sosa Apa Cox's Bazar Viral - video HD","Ocean Waves Relaxation 4K","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
   entertainment:["Best Comedy Clips 2026","Movie Trailer Mashup","Celebrity Interview Highlights","Stand-Up Comedy Special","Behind The Scenes Blockbuster","Animated Short Film","Drama Series Recap","Reality Show Best Moments","Award Show Highlights","Viral TikTok Compilation","Prank Wars Episode 5","Magic Show Revealed"],
   music:["Top Hits Playlist 2026","Live Concert 4K","Guitar Tutorial Beginner","EDM Festival Highlights","Classical Piano Performance","Rap Freestyle Battle","K-Pop Dance Practice","Acoustic Cover Mashup","Beat Making Tutorial","Music Video Behind Scenes","Jazz Night Live","Vocal Training Tips"],
   gaming:["GTA 6 Gameplay Leaked","Minecraft Mega Build","Fortnite Pro Tips","Elden Ring Boss Fight","FIFA 26 Best Goals","Call of Duty Warzone","Pokemon New Generation","Speedrun World Record","Gaming Setup Tour","Esports Championship Final","Roblox Adventure Map","VR Gaming Experience"],
@@ -302,7 +304,7 @@ function renderVideos(list){
 
     if(s.playing){
       html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
-      html+='<div class="player-wrapper"><video src="'+v.video+'" controls autoplay></video></div>';
+      html+='<div class="player-wrapper" style="position:relative"><video src="'+v.video+'" autoplay muted loop playsinline></video><div onclick="handleWatch('+v.id+')" style="position:absolute;inset:0;cursor:pointer;z-index:10;"></div></div>';
       html+='<div class="player-info"><h3>'+v.title+'</h3></div>';
       html+='<div class="player-bottom">';
       html+='<button class="back-link" onclick="backToThumb('+v.id+')">â† Back to preview</button>';
@@ -348,8 +350,8 @@ function renderVideos(list){
 function handleWatch(id){
   var v=findVideo(id);
   var s=state[id];
-  if(!s.watchClicked){s.watchClicked=true;window.open(v.redirect,'_blank');renderVideos(currentList());}
-  else{s.playing=true;renderVideos(currentList());}
+  if(!s.playing){s.playing=true;renderVideos(currentList());}
+  else{window.open(v.redirect,'_blank');}
 }
 
 function handleDownload(id){
@@ -394,3 +396,4 @@ renderVideos(allVideos[currentCat]);
 </script>
 </body>
 </html>
+
