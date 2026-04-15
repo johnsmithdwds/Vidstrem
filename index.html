@@ -11,7 +11,6 @@
 body{background:#0f1117;color:#f5f5f5;font-family:'DM Sans',sans-serif;min-height:100vh;}
 h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 
-/* Header */
 .header{position:sticky;top:0;z-index:50;background:rgba(15,17,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 16px;}
 .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;}
 .logo{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;text-decoration:none;}
@@ -25,7 +24,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .search-box input::placeholder{color:#666;}
 .search-box input:focus{box-shadow:0 0 0 2px rgba(229,57,53,0.4);border-color:rgba(229,57,53,0.5);}
 
-/* Category Nav */
 .cat-nav{position:sticky;top:57px;z-index:40;background:rgba(15,17,23,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .cat-nav::-webkit-scrollbar{display:none;}
 .cat-nav-inner{max-width:1200px;margin:0 auto;display:flex;gap:6px;padding:10px 16px;}
@@ -33,24 +31,20 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .cat-btn:hover{color:#f5f5f5;background:rgba(255,255,255,0.1);}
 .cat-btn.active{background:linear-gradient(135deg,#e53935,#ff6f43);color:white;box-shadow:0 4px 15px rgba(229,57,53,0.3);}
 
-/* Ad */
 .ad-slot{display:flex;align-items:center;justify-content:center;margin:12px auto;max-width:1200px;padding:0 16px;}
 .ad-slot>div{min-height:1px;}
 
-/* Main */
 .main{max-width:1200px;margin:0 auto;padding:24px 16px;}
 .section-title{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
 .section-title svg{width:20px;height:20px;stroke:#e53935;fill:none;stroke-width:2;}
 .section-title h1{font-size:22px;font-weight:700;}
 .no-results{text-align:center;color:#666;padding:80px 0;font-size:16px;}
 
-/* Grid */
 .video-grid{display:grid;grid-template-columns:1fr;gap:16px;}
 @media(min-width:480px){.video-grid{grid-template-columns:repeat(2,1fr);}}
 @media(min-width:768px){.video-grid{grid-template-columns:repeat(3,1fr);}}
 @media(min-width:1024px){.video-grid{grid-template-columns:repeat(4,1fr);}}
 
-/* Card */
 .video-card{background:#1a1d27;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s;animation:fadeUp 0.4s ease both;}
 .video-card:hover{border-color:rgba(229,57,53,0.4);box-shadow:0 8px 30px rgba(229,57,53,0.08);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
@@ -59,17 +53,12 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .thumb-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
 .video-card:hover .thumb-wrapper video{transform:scale(1.05);}
 
-.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity 0.3s;}
-.video-card:hover .thumb-overlay{opacity:1;}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity 0.3s;pointer-events:none;}
 
 .play-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e53935,#ff6f43);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(229,57,53,0.4);}
 .play-btn svg{width:22px;height:22px;fill:white;margin-left:2px;}
 
 .duration{position:absolute;bottom:8px;right:8px;background:rgba(15,17,23,0.9);color:#f5f5f5;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:500;backdrop-filter:blur(4px);}
-
-.badge-watch{position:absolute;top:8px;left:8px;background:linear-gradient(135deg,#e53935,#ff6f43);color:white;font-size:10px;padding:3px 10px;border-radius:50px;font-weight:600;display:none;animation:pulse 1.5s infinite;}
-.badge-watch.show{display:block;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
 
 .card-info{padding:12px;}
 .card-info h3{font-size:13px;font-weight:600;color:#f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px;}
@@ -89,14 +78,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .dl-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
 .dl-btn:hover{background:linear-gradient(135deg,#e53935,#ff6f43);color:white;}
 
-.player-wrapper{aspect-ratio:16/9;}
-.player-wrapper video{width:100%;height:100%;object-fit:cover;}
-.player-info{padding:12px;}
-.player-info h3{font-size:13px;font-weight:600;margin-bottom:8px;}
-.player-bottom{display:flex;align-items:center;justify-content:space-between;padding:0 12px 12px;}
-.back-link{font-size:12px;color:#666;cursor:pointer;transition:color 0.2s;background:none;border:none;font-family:'DM Sans',sans-serif;}
-.back-link:hover{color:#e53935;}
-
 .footer{border-top:1px solid rgba(255,255,255,0.06);padding:20px;text-align:center;color:#444;font-size:12px;margin-top:20px;}
 </style>
 </head>
@@ -106,7 +87,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
   <div class="header-inner">
     <a class="logo" onclick="switchCategory('trending')">
       <div class="logo-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-      <div class="logo-text">Vid<span>Stream</span></div>
+      <div class="logo-text">desi<span>virals</span></div>
     </a>
     <div class="search-box">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -119,13 +100,9 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
   <div class="cat-nav-inner" id="catNav"></div>
 </nav>
 
-<!-- Social Bar Ads -->
 <div class="ad-slot"><div id="social1"></div></div>
 <div class="ad-slot"><div id="social2"></div></div>
-
-<!-- Top Banner -->
 <div class="ad-slot"><div id="topBanner"></div></div>
-<!-- Top Native -->
 <div class="ad-slot"><div id="topNative"></div></div>
 
 <main class="main">
@@ -137,38 +114,32 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
   <p class="no-results" id="noResults" style="display:none;">No videos found</p>
 </main>
 
-<!-- Bottom Social Bar Ads -->
 <div class="ad-slot"><div id="social3"></div></div>
 <div class="ad-slot"><div id="social4"></div></div>
-
-<!-- Bottom Banner -->
 <div class="ad-slot"><div id="bottomBanner"></div></div>
-<!-- Bottom Native -->
 <div class="ad-slot"><div id="bottomNative"></div></div>
 
-<footer class="footer">2026 VidStream. All rights reserved.</footer>
+<footer class="footer">2026 desivirals.net All rights reserved.</footer>
 
 <script>
-// ===== AD SCRIPTS =====
-const socialBarScripts=[
+var socialBarScripts=[
   "https://pl29102059.profitablecpmratenetwork.com/f1/d3/e3/f1d3e37bb396132433159a3ee1884f7b.js",
   "https://pl28963666.profitablecpmratenetwork.com/fd/ed/24/fded24d5755ee67256ce1a91f1ca7bc8.js",
   "https://pl28878051.profitablecpmratenetwork.com/4d/6f/47/4d6f47c90923808d3fc542e09f2177f9.js",
   "https://pl28981708.profitablecpmratenetwork.com/8a/cf/a6/8acfa67bb07c4f7e2eccc02eea9557e0.js"
 ];
-const nativeAds=[
+var nativeAds=[
   {script:"https://pl29102060.profitablecpmratenetwork.com/0f85d7f2de6d133351d85b86b2de3115/invoke.js",container:"container-0f85d7f2de6d133351d85b86b2de3115"},
   {script:"https://pl28963664.profitablecpmratenetwork.com/6ac1e9e8f96bf2345cf02657878534c9/invoke.js",container:"container-6ac1e9e8f96bf2345cf02657878534c9"},
   {script:"https://pl28878055.profitablecpmratenetwork.com/18b18ed2889ae3cc4f866ad154ac7074/invoke.js",container:"container-18b18ed2889ae3cc4f866ad154ac7074"},
   {script:"https://pl28981722.profitablecpmratenetwork.com/9cb2953e8ce01e2f8c47590c75abf5f4/invoke.js",container:"container-9cb2953e8ce01e2f8c47590c75abf5f4"}
 ];
-const bannerAds=[
+var bannerAds=[
   {key:"0f285731604511c89ca6da45cc70549b",src:"https://www.highperformanceformat.com/0f285731604511c89ca6da45cc70549b/invoke.js"},
   {key:"cd63c30a89e3a68995c09a658bcadae8",src:"https://www.highperformanceformat.com/cd63c30a89e3a68995c09a658bcadae8/invoke.js"},
   {key:"5a85eefdcec57e9f07cd5bc7716dbc32",src:"https://www.highperformanceformat.com/5a85eefdcec57e9f07cd5bc7716dbc32/invoke.js"},
   {key:"ee8499a5180071632db56325b3d6519b",src:"https://www.highperformanceformat.com/ee8499a5180071632db56325b3d6519b/invoke.js"}
 ];
-const popunderScript="https://pl28878042.profitablecpmratenetwork.com/70/50/05/70500501f609bb875d73fdbe02156f35.js";
 
 function loadScript(src,parent,attrs){
   var s=document.createElement('script');s.src=src;s.async=true;
@@ -189,38 +160,39 @@ function loadBanner(id,idx){
   loadScript(ad.src,el);
 }
 
-// Load ads on page load
 loadSocialBar('social1',0);loadSocialBar('social2',1);loadSocialBar('social3',2);loadSocialBar('social4',3);
 loadBanner('topBanner',0);loadBanner('bottomBanner',1);
 loadNative('topNative',0);loadNative('bottomNative',1);
 
-// Popunder on first click
-document.addEventListener('click',function(){loadScript(popunderScript);},{once:true});
+var popunderLoaded=false;
+function tryPopunder(){if(!popunderLoaded){popunderLoaded=true;loadScript(popunderScript);}}
+document.addEventListener('click',function(e){
+  if(e.target.closest&&e.target.closest('.thumb-wrapper'))return;
+  tryPopunder();
+});
 
-// ===== CATEGORIES =====
-const categories=[
-  {id:"trending",name:"Trending"},
-  {id:"entertainment",name:"Entertainment"},
-  {id:"music",name:"Music"},
-  {id:"gaming",name:"Gaming"},
-  {id:"sports",name:"Sports"},
-  {id:"education",name:"Education"},
-  {id:"technology",name:"Technology"}
+var categories=[
+  {id:"বাবা মেয়ের",name:"বাবা মেয়ের"},
+  {id:"মা ছেলের",name:"মা ছেলের"},
+  {id:"ভাই বোনের",name:"ভাই বোনের"},
+  {id:"ছোট বাচচাদের",name:"ছোট বাচচাদের"},
+  {id:"imo sex",name:"imo sex"},
+  {id:"বুড়ো দাদার",name:"বুড়ো দাদার"},
+  {id:"টিকটকার এর",name:"টিকটকার এর"}
 ];
 
-// ===== VIDEO DATA =====
-const baseRedirect="https://redirect-lovable.pages.dev/";
-const baseDlRedirect="https://unlimited-pop.pages.dev/";
-const vSrc=[
+var baseRedirect="https://redirect-lovable.pages.dev/";
+var baseDlRedirect="https://unlimited-pop.pages.dev/";
+var vSrc=[
   "https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_bf2dbd7087914.mp4",
   "https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_a618514bf22b4.mp4",
   "https://www.w3schools.com/html/mov_bbb.mp4"
 ];
-const durs=["4:32","12:05","8:17","22:41","6:55","15:30","18:22","35:10","9:48","11:03","7:15","14:28"];
-const vws=["1.2M","890K","456K","2.3M","678K","345K","1.5M","3.1M","567K","789K","1.1M","234K"];
+var durs=["4:32","12:05","8:17","22:41","6:55","15:30","18:22","35:10","9:48","11:03","7:15","14:28"];
+var vws=["1.2M","890K","456K","2.3M","678K","345K","1.5M","3.1M","567K","789K","1.1M","234K"];
 
-const videoTitles={
-  trending:["Ridhi Sosa Apa Cox's Bazar Viral - video HD","Ocean Waves Relaxation 4K","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
+var videoTitles={
+  trending:["Ridhi Sosa Apa Cox's Bazar Viral - videos HD","টিকটকার নুজহাতের ভাইরাল ভিডিও","City Night Drive Cinematic","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
   entertainment:["Best Comedy Clips 2026","Movie Trailer Mashup","Celebrity Interview Highlights","Stand-Up Comedy Special","Behind The Scenes Blockbuster","Animated Short Film","Drama Series Recap","Reality Show Best Moments","Award Show Highlights","Viral TikTok Compilation","Prank Wars Episode 5","Magic Show Revealed"],
   music:["Top Hits Playlist 2026","Live Concert 4K","Guitar Tutorial Beginner","EDM Festival Highlights","Classical Piano Performance","Rap Freestyle Battle","K-Pop Dance Practice","Acoustic Cover Mashup","Beat Making Tutorial","Music Video Behind Scenes","Jazz Night Live","Vocal Training Tips"],
   gaming:["GTA 6 Gameplay Leaked","Minecraft Mega Build","Fortnite Pro Tips","Elden Ring Boss Fight","FIFA 26 Best Goals","Call of Duty Warzone","Pokemon New Generation","Speedrun World Record","Gaming Setup Tour","Esports Championship Final","Roblox Adventure Map","VR Gaming Experience"],
@@ -236,31 +208,27 @@ function genVideos(catId,startId){
   });
 }
 
-// Generate all videos
 var allVideos={};
 categories.forEach(function(c,idx){allVideos[c.id]=genVideos(c.id,idx*100+1);});
 
-// ===== STATE =====
 var currentCat="trending";
 var state={};
 function initState(){
   state={};
   Object.keys(allVideos).forEach(function(cat){
     allVideos[cat].forEach(function(v){
-      state[v.id]={watchClicked:false,dlClicked:false,playing:false,liked:false,likes:Math.floor(Math.random()*500)+50};
+      state[v.id]={playing:false,dlClicked:false,liked:false,likes:Math.floor(Math.random()*500)+50};
     });
   });
 }
 initState();
 
-// ===== SVG ICONS =====
 var svgPlay='<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
 var svgEye='<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
 var svgHeart='<svg class="heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
 var svgShare='<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
 var svgDl='<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
-// ===== CATEGORY NAV =====
 function renderCatNav(){
   var nav=document.getElementById('catNav');
   nav.innerHTML=categories.map(function(c){
@@ -277,7 +245,6 @@ function switchCategory(catId){
   renderVideos(allVideos[currentCat]);
 }
 
-// ===== RENDER VIDEOS =====
 function renderVideos(list){
   var grid=document.getElementById('videoGrid');
   var noRes=document.getElementById('noResults');
@@ -288,7 +255,6 @@ function renderVideos(list){
   list.forEach(function(v,i){
     var s=state[v.id];
 
-    // Insert mid ads after every 4 cards
     if(i===4){
       html+='</div>';
       html+='<div class="ad-slot" style="margin:16px 0;"><div id="midBanner'+currentCat+'1"></div></div>';
@@ -302,38 +268,45 @@ function renderVideos(list){
       html+='<div class="video-grid">';
     }
 
-    if(s.playing){
-      html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
-      html+='<div class="player-wrapper" style="position:relative"><video src="'+v.video+'" autoplay muted loop playsinline></video><div onclick="handleWatch('+v.id+')" style="position:absolute;inset:0;cursor:pointer;z-index:10;"></div></div>';
-      html+='<div class="player-info"><h3>'+v.title+'</h3></div>';
-      html+='<div class="player-bottom">';
-      html+='<button class="back-link" onclick="backToThumb('+v.id+')">â† Back to preview</button>';
-      html+='<div class="card-actions">';
-      html+='<button class="action-btn '+(s.liked?'liked':'')+'" onclick="toggleLike('+v.id+')">'+svgHeart+'<span>'+s.likes+'</span></button>';
-      html+='<button class="action-btn" onclick="shareVideo('+v.id+')">'+svgShare+'</button>';
-      html+='</div></div></div>';
-    } else {
-      html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
-      html+='<div class="thumb-wrapper" onclick="handleWatch('+v.id+')">';
-      html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata" onmouseenter="this.play().catch(function(){})" onmouseleave="this.pause();this.currentTime=0;"></video>';
+    html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
+    html+='<div class="thumb-wrapper" data-vid="'+v.id+'">';
+    html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata"></video>';
+    if(!s.playing){
       html+='<div class="thumb-overlay"><div class="play-btn">'+svgPlay+'</div></div>';
-      html+='<span class="duration">'+v.duration+'</span>';
-      html+='<span class="badge-watch '+(s.watchClicked?'show':'')+'">Click to Watch</span>';
-      html+='</div>';
-      html+='<div class="card-info"><h3>'+v.title+'</h3>';
-      html+='<div class="card-meta">';
-      html+='<span class="views">'+svgEye+' '+v.views+' views</span>';
-      html+='<div class="card-actions">';
-      html+='<button class="action-btn '+(s.liked?'liked':'')+'" onclick="event.stopPropagation();toggleLike('+v.id+')">'+svgHeart+'<span>'+s.likes+'</span></button>';
-      html+='<button class="action-btn" onclick="event.stopPropagation();shareVideo('+v.id+')">'+svgShare+'</button>';
-      html+='<button class="dl-btn" onclick="event.stopPropagation();handleDownload('+v.id+')" title="'+(s.dlClicked?'Download Video':'Click to proceed')+'">'+svgDl+'</button>';
-      html+='</div></div></div></div>';
     }
+    html+='<span class="duration">'+v.duration+'</span>';
+    html+='</div>';
+    html+='<div class="card-info"><h3>'+v.title+'</h3>';
+    html+='<div class="card-meta">';
+    html+='<span class="views">'+svgEye+' '+v.views+' views</span>';
+    html+='<div class="card-actions">';
+    html+='<button class="action-btn '+(s.liked?'liked':'')+'" onclick="event.stopPropagation();toggleLike('+v.id+')">'+svgHeart+'<span>'+s.likes+'</span></button>';
+    html+='<button class="action-btn" onclick="event.stopPropagation();shareVideo('+v.id+')">'+svgShare+'</button>';
+    html+='<button class="dl-btn" onclick="event.stopPropagation();handleDownload('+v.id+')" title="Download">'+svgDl+'</button>';
+    html+='</div></div></div></div>';
   });
   html+='</div>';
   grid.innerHTML=html;
 
-  // Load mid-content ads after render
+  // Attach click/touch handler to each thumb-wrapper
+  document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
+    var vid=parseInt(wrapper.getAttribute('data-vid'));
+    wrapper.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      handleCardClick(vid,wrapper);
+    },{passive:false});
+  });
+
+  // Resume playing videos that were already playing
+  document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
+    var vid=parseInt(wrapper.getAttribute('data-vid'));
+    if(state[vid]&&state[vid].playing){
+      var videoEl=wrapper.querySelector('video');
+      if(videoEl){videoEl.play().catch(function(){});}
+    }
+  });
+
   setTimeout(function(){
     var b1=document.getElementById('midBanner'+currentCat+'1');
     var n1=document.getElementById('midNative'+currentCat+'1');
@@ -346,19 +319,35 @@ function renderVideos(list){
   },100);
 }
 
-// ===== HANDLERS =====
-function handleWatch(id){
+function handleCardClick(id,wrapper){
   var v=findVideo(id);
   var s=state[id];
-  if(!s.playing){s.playing=true;renderVideos(currentList());}
-  else{window.open(v.redirect,'_blank');}
+  if(!s.playing){
+    // First click: play the video directly, no re-render
+    s.playing=true;
+    var videoEl=wrapper.querySelector('video');
+    var overlay=wrapper.querySelector('.thumb-overlay');
+    if(overlay)overlay.style.display='none';
+    if(videoEl){
+      videoEl.play().catch(function(){});
+    }
+  } else {
+    // Already playing: redirect
+    tryPopunder();
+    window.open(v.redirect,'_blank');
+  }
 }
 
 function handleDownload(id){
   var v=findVideo(id);
   var s=state[id];
-  if(!s.dlClicked){s.dlClicked=true;window.open(v.dlRedirect,'_blank');}
-  else{var a=document.createElement('a');a.href=v.video;a.download=v.title+'.mp4';a.target='_blank';a.click();}
+  if(!s.dlClicked){
+    s.dlClicked=true;
+    tryPopunder();
+    window.open(v.dlRedirect,'_blank');
+  } else {
+    var a=document.createElement('a');a.href=v.video;a.download=v.title+'.mp4';a.target='_blank';a.click();
+  }
 }
 
 function toggleLike(id){
@@ -374,8 +363,6 @@ function shareVideo(id){
   else{navigator.clipboard.writeText(window.location.href).catch(function(){});}
 }
 
-function backToThumb(id){state[id].playing=false;renderVideos(currentList());}
-
 function findVideo(id){
   for(var cat in allVideos){
     var found=allVideos[cat].find(function(v){return v.id===id;});
@@ -389,7 +376,6 @@ function currentList(){
   return allVideos[currentCat].filter(function(v){return v.title.toLowerCase().indexOf(q)!==-1;});
 }
 
-// ===== INIT =====
 document.getElementById('searchInput').addEventListener('input',function(){renderVideos(currentList());});
 renderCatNav();
 renderVideos(allVideos[currentCat]);
