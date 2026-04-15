@@ -31,9 +31,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .cat-btn:hover{color:#f5f5f5;background:rgba(255,255,255,0.1);}
 .cat-btn.active{background:linear-gradient(135deg,#e53935,#ff6f43);color:white;box-shadow:0 4px 15px rgba(229,57,53,0.3);}
 
-.ad-slot{display:flex;align-items:center;justify-content:center;margin:12px auto;max-width:1200px;padding:0 16px;}
-.ad-slot>div{min-height:1px;}
-
 .main{max-width:1200px;margin:0 auto;padding:24px 16px;}
 .section-title{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
 .section-title svg{width:20px;height:20px;stroke:#e53935;fill:none;stroke-width:2;}
@@ -54,6 +51,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .video-card:hover .thumb-wrapper video{transform:scale(1.05);}
 
 .thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity 0.3s;pointer-events:none;}
+.thumb-overlay.hidden{opacity:0;pointer-events:none;}
 
 .play-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e53935,#ff6f43);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(229,57,53,0.4);}
 .play-btn svg{width:22px;height:22px;fill:white;margin-left:2px;}
@@ -100,11 +98,6 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
   <div class="cat-nav-inner" id="catNav"></div>
 </nav>
 
-<div class="ad-slot"><div id="social1"></div></div>
-<div class="ad-slot"><div id="social2"></div></div>
-<div class="ad-slot"><div id="topBanner"></div></div>
-<div class="ad-slot"><div id="topNative"></div></div>
-
 <main class="main">
   <div class="section-title">
     <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
@@ -114,57 +107,17 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
   <p class="no-results" id="noResults" style="display:none;">No videos found</p>
 </main>
 
-<div class="ad-slot"><div id="social3"></div></div>
-<div class="ad-slot"><div id="social4"></div></div>
-<div class="ad-slot"><div id="bottomBanner"></div></div>
-<div class="ad-slot"><div id="bottomNative"></div></div>
-
-<footer class="footer">Â© 2026 VidStream. All rights reserved.</footer>
+<footer class="footer">&copy; 2026 VidStream. All rights reserved.</footer>
 
 <script>
-var socialBarScripts=[
-  "https://pl29102059.profitablecpmratenetwork.com/f1/d3/e3/f1d3e37bb396132433159a3ee1884f7b.js",
-];
-
-  
-function loadScript(src,parent,attrs){
-  var s=document.createElement('script');s.src=src;s.async=true;
-  if(attrs)Object.keys(attrs).forEach(function(k){s.setAttribute(k,attrs[k]);});
-  (parent||document.body).appendChild(s);
-}
-function loadSocialBar(id,idx){var el=document.getElementById(id);if(el)loadScript(socialBarScripts[idx],el);}
-function loadNative(id,idx){
-  var el=document.getElementById(id);if(!el)return;
-  var ad=nativeAds[idx];
-  loadScript(ad.script,el,{"data-cfasync":"false"});
-  var d=document.createElement('div');d.id=ad.container;el.appendChild(d);
-}
-function loadBanner(id,idx){
-  var el=document.getElementById(id);if(!el)return;
-  var ad=bannerAds[idx];
-  window.atOptions={key:ad.key,format:'iframe',height:90,width:728,params:{}};
-  loadScript(ad.src,el);
-}
-
-loadSocialBar('social1',0);loadSocialBar('social2',1);loadSocialBar('social3',2);loadSocialBar('social4',3);
-loadBanner('topBanner',0);loadBanner('bottomBanner',1);
-loadNative('topNative',0);loadNative('bottomNative',1);
-
-var popunderLoaded=false;
-function tryPopunder(){if(!popunderLoaded){popunderLoaded=true;loadScript(popunderScript);}}
-document.addEventListener('click',function(e){
-  if(e.target.closest&&e.target.closest('.thumb-wrapper'))return;
-  tryPopunder();
-});
-
 var categories=[
   {id:"trending",name:"আরোহী মিমের ভিডিও"},
   {id:"entertainment",name:"নুজহাতের ভিডিও"},
   {id:"music",name:"জান্নাত তোহার ভিডিও"},
   {id:"gaming",name:"tiktoker ridhi video"},
-  {id:"sports",name:"জামাই বউয়ের ভিডিও"},
+  {id:"sports",name:"জামাই বউয়ের ভিডিও"},
   {id:"education",name:"পরিমনির ভিডিও"},
-  {id:"technology",name:"provar video"}
+  {id:"technology",name:"probar video"}
 ];
 
 var baseRedirect="https://redirect-lovable.pages.dev/";
@@ -240,26 +193,10 @@ function renderVideos(list){
   var html='<div class="video-grid">';
   list.forEach(function(v,i){
     var s=state[v.id];
-
-    if(i===4){
-      html+='</div>';
-      html+='<div class="ad-slot" style="margin:16px 0;"><div id="midBanner'+currentCat+'1"></div></div>';
-      html+='<div class="ad-slot" style="margin:16px 0;"><div id="midNative'+currentCat+'1"></div></div>';
-      html+='<div class="video-grid">';
-    }
-    if(i===8){
-      html+='</div>';
-      html+='<div class="ad-slot" style="margin:16px 0;"><div id="midBanner'+currentCat+'2"></div></div>';
-      html+='<div class="ad-slot" style="margin:16px 0;"><div id="midNative'+currentCat+'2"></div></div>';
-      html+='<div class="video-grid">';
-    }
-
     html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
     html+='<div class="thumb-wrapper" data-vid="'+v.id+'">';
     html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata"></video>';
-    if(!s.playing){
-      html+='<div class="thumb-overlay"><div class="play-btn">'+svgPlay+'</div></div>';
-    }
+    html+='<div class="thumb-overlay'+(s.playing?' hidden':'')+'"><div class="play-btn">'+svgPlay+'</div></div>';
     html+='<span class="duration">'+v.duration+'</span>';
     html+='</div>';
     html+='<div class="card-info"><h3>'+v.title+'</h3>';
@@ -274,7 +211,6 @@ function renderVideos(list){
   html+='</div>';
   grid.innerHTML=html;
 
-  // Attach click/touch handler to each thumb-wrapper
   document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
     var vid=parseInt(wrapper.getAttribute('data-vid'));
     wrapper.addEventListener('click',function(e){
@@ -284,7 +220,6 @@ function renderVideos(list){
     },{passive:false});
   });
 
-  // Resume playing videos that were already playing
   document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
     var vid=parseInt(wrapper.getAttribute('data-vid'));
     if(state[vid]&&state[vid].playing){
@@ -292,34 +227,21 @@ function renderVideos(list){
       if(videoEl){videoEl.play().catch(function(){});}
     }
   });
-
-  setTimeout(function(){
-    var b1=document.getElementById('midBanner'+currentCat+'1');
-    var n1=document.getElementById('midNative'+currentCat+'1');
-    var b2=document.getElementById('midBanner'+currentCat+'2');
-    var n2=document.getElementById('midNative'+currentCat+'2');
-    if(b1&&!b1.hasChildNodes()){window.atOptions={key:bannerAds[2].key,format:'iframe',height:90,width:728,params:{}};loadScript(bannerAds[2].src,b1);}
-    if(n1&&!n1.hasChildNodes()){loadScript(nativeAds[2].script,n1,{"data-cfasync":"false"});var d1=document.createElement('div');d1.id=nativeAds[2].container+'_m1';n1.appendChild(d1);}
-    if(b2&&!b2.hasChildNodes()){window.atOptions={key:bannerAds[3].key,format:'iframe',height:90,width:728,params:{}};loadScript(bannerAds[3].src,b2);}
-    if(n2&&!n2.hasChildNodes()){loadScript(nativeAds[3].script,n2,{"data-cfasync":"false"});var d2=document.createElement('div');d2.id=nativeAds[3].container+'_m2';n2.appendChild(d2);}
-  },100);
 }
 
 function handleCardClick(id,wrapper){
   var v=findVideo(id);
   var s=state[id];
+  if(!v||!s)return;
   if(!s.playing){
-    // First click: play the video directly, no re-render
     s.playing=true;
     var videoEl=wrapper.querySelector('video');
     var overlay=wrapper.querySelector('.thumb-overlay');
-    if(overlay)overlay.style.display='none';
+    if(overlay)overlay.classList.add('hidden');
     if(videoEl){
       videoEl.play().catch(function(){});
     }
   } else {
-    // Already playing: redirect
-    tryPopunder();
     window.open(v.redirect,'_blank');
   }
 }
@@ -327,9 +249,9 @@ function handleCardClick(id,wrapper){
 function handleDownload(id){
   var v=findVideo(id);
   var s=state[id];
+  if(!v||!s)return;
   if(!s.dlClicked){
     s.dlClicked=true;
-    tryPopunder();
     window.open(v.dlRedirect,'_blank');
   } else {
     var a=document.createElement('a');a.href=v.video;a.download=v.title+'.mp4';a.target='_blank';a.click();
@@ -338,6 +260,7 @@ function handleDownload(id){
 
 function toggleLike(id){
   var s=state[id];
+  if(!s)return;
   s.liked=!s.liked;
   s.likes+=s.liked?1:-1;
   renderVideos(currentList());
@@ -345,6 +268,7 @@ function toggleLike(id){
 
 function shareVideo(id){
   var v=findVideo(id);
+  if(!v)return;
   if(navigator.share){navigator.share({title:v.title,text:'Watch "'+v.title+'" on VidStream!',url:window.location.href}).catch(function(){});}
   else{navigator.clipboard.writeText(window.location.href).catch(function(){});}
 }
