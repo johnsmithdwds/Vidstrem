@@ -4,286 +4,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VidStream - Watch & Download Videos</title>
+<meta name="description" content="VidStream - Watch and download trending videos for free">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: #121212;
-  color: #f2f2f2;
-  font-family: 'DM Sans', sans-serif;
-  min-height: 100vh;
-}
-
-h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0f1117;color:#f5f5f5;font-family:'DM Sans',sans-serif;min-height:100vh;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 
 /* Header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(18, 18, 18, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid #2a2a2a;
-  padding: 12px 16px;
-}
+.header{position:sticky;top:0;z-index:50;background:rgba(15,17,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 16px;}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#e53935,#ff6f43);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(229,57,53,0.3);}
+.logo-icon svg{width:18px;height:18px;fill:white;}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#f5f5f5;}
+.logo-text span{color:#e53935;}
+.search-box{flex:1;max-width:500px;margin:0 auto;position:relative;}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:#666;fill:none;stroke-width:2;}
+.search-box input{width:100%;background:rgba(255,255,255,0.07);color:#f5f5f5;border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:10px 16px 10px 40px;font-size:14px;outline:none;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
+.search-box input::placeholder{color:#666;}
+.search-box input:focus{box-shadow:0 0 0 2px rgba(229,57,53,0.4);border-color:rgba(229,57,53,0.5);}
 
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.logo-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #e53935, #ff5252);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-icon svg { width: 20px; height: 20px; fill: white; }
-
-.logo-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #f2f2f2;
-}
-
-.logo-text span { color: #e53935; }
-
-.search-box {
-  flex: 1;
-  max-width: 500px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.search-box svg {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  stroke: #888;
-  fill: none;
-  stroke-width: 2;
-}
-
-.search-box input {
-  width: 100%;
-  background: #262626;
-  color: #f2f2f2;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 16px 10px 40px;
-  font-size: 14px;
-  outline: none;
-  transition: box-shadow 0.3s;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.search-box input::placeholder { color: #888; }
-.search-box input:focus { box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.4); }
+/* Ad Banner */
+.ad-banner{max-width:1200px;margin:16px auto;display:flex;align-items:center;justify-content:center;}
+.ad-placeholder{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;color:#444;font-size:11px;display:flex;align-items:center;justify-content:center;width:100%;max-width:728px;height:90px;margin:0 auto;}
 
 /* Main */
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px 16px;
-}
-
-.main h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.no-results {
-  text-align: center;
-  color: #888;
-  padding: 80px 0;
-  font-size: 16px;
-}
+.main{max-width:1200px;margin:0 auto;padding:24px 16px;}
+.section-title{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.section-title svg{width:20px;height:20px;stroke:#e53935;fill:none;stroke-width:2;}
+.section-title h1{font-size:22px;font-weight:700;}
+.no-results{text-align:center;color:#666;padding:80px 0;font-size:16px;}
 
 /* Grid */
-.video-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
+.video-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+@media(min-width:480px){.video-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:768px){.video-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1024px){.video-grid{grid-template-columns:repeat(4,1fr);}}
 
-@media (min-width: 480px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 768px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1024px) { .video-grid { grid-template-columns: repeat(4, 1fr); } }
+/* Card */
+.video-card{background:#1a1d27;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s;animation:fadeUp 0.4s ease both;}
+.video-card:hover{border-color:rgba(229,57,53,0.4);box-shadow:0 8px 30px rgba(229,57,53,0.08);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* Video Card */
-.video-card {
-  background: #1c1c1c;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s;
-  animation: fadeUp 0.4s ease both;
-}
+.thumb-wrapper{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:#111;}
+.thumb-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.video-card:hover .thumb-wrapper video{transform:scale(1.05);}
 
-.video-card:hover {
-  box-shadow: 0 0 0 1px rgba(229, 57, 53, 0.4);
-}
+.thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;}
+.video-card:hover .thumb-overlay{opacity:1;}
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.play-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e53935,#ff6f43);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(229,57,53,0.4);}
+.play-btn svg{width:22px;height:22px;fill:white;margin-left:2px;}
 
-.thumb-wrapper {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  cursor: pointer;
-}
+.duration{position:absolute;bottom:8px;right:8px;background:rgba(15,17,23,0.9);color:#f5f5f5;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:500;backdrop-filter:blur(4px);}
 
-.thumb-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s;
-}
+.badge-watch{position:absolute;top:8px;left:8px;background:linear-gradient(135deg,#e53935,#ff6f43);color:white;font-size:10px;padding:3px 10px;border-radius:50px;font-weight:600;display:none;animation:pulse 1.5s infinite;}
+.badge-watch.show{display:block;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
 
-.video-card:hover .thumb-wrapper img { transform: scale(1.05); }
+/* Card Info */
+.card-info{padding:12px;}
+.card-info h3{font-size:13px;font-weight:600;color:#f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px;}
 
-.thumb-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(18,18,18,0.7), transparent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
+.card-meta{display:flex;align-items:center;justify-content:space-between;}
+.views{display:flex;align-items:center;gap:4px;font-size:11px;color:#666;}
+.views svg{width:14px;height:14px;stroke:#666;fill:none;stroke-width:2;}
 
-.video-card:hover .thumb-overlay { opacity: 1; }
+.card-actions{display:flex;align-items:center;gap:2px;}
+.action-btn{display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:8px;border:none;cursor:pointer;font-size:11px;color:#666;background:transparent;transition:all 0.2s;font-family:'DM Sans',sans-serif;}
+.action-btn:hover{color:#e53935;background:rgba(229,57,53,0.1);}
+.action-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+.action-btn.liked{color:#e53935;background:rgba(229,57,53,0.1);}
+.action-btn.liked svg.heart{fill:#e53935;stroke:#e53935;}
 
-.play-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(229, 57, 53, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.dl-btn{flex-shrink:0;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.05);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;color:#666;}
+.dl-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+.dl-btn:hover{background:linear-gradient(135deg,#e53935,#ff6f43);color:white;}
 
-.play-btn svg { width: 20px; height: 20px; fill: white; margin-left: 2px; }
+/* Player */
+.player-wrapper{aspect-ratio:16/9;}
+.player-wrapper video{width:100%;height:100%;object-fit:cover;}
+.player-info{padding:12px;}
+.player-info h3{font-size:13px;font-weight:600;margin-bottom:8px;}
+.player-bottom{display:flex;align-items:center;justify-content:space-between;padding:0 12px 12px;}
+.back-link{font-size:12px;color:#666;cursor:pointer;transition:color 0.2s;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.back-link:hover{color:#e53935;}
 
-.duration {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(18, 18, 18, 0.8);
-  color: #f2f2f2;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 500;
-}
-
-.badge-watch {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #e53935;
-  color: white;
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 50px;
-  font-weight: 600;
-  display: none;
-}
-
-.badge-watch.show { display: block; }
-
-.card-info {
-  padding: 12px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.card-info h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #f2f2f2;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.dl-btn {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #262626;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
-}
-
-.dl-btn svg { width: 16px; height: 16px; stroke: #888; fill: none; stroke-width: 2; }
-.dl-btn:hover { background: #e53935; }
-.dl-btn:hover svg { stroke: white; }
-
-/* Video Player */
-.player-wrapper {
-  aspect-ratio: 16/9;
-}
-
-.player-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.back-link {
-  font-size: 12px;
-  color: #888;
-  cursor: pointer;
-  margin-top: 4px;
-  display: inline-block;
-  transition: color 0.2s;
-}
-
-.back-link:hover { color: #e53935; }
+/* Footer */
+.footer{border-top:1px solid rgba(255,255,255,0.06);padding:20px;text-align:center;color:#444;font-size:12px;margin-top:20px;}
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header class="header">
   <div class="header-inner">
     <div class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       <div class="logo-text">Vid<span>Stream</span></div>
     </div>
     <div class="search-box">
@@ -293,112 +110,153 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
   </div>
 </header>
 
-<!-- Main -->
+<!-- Top Ad -->
+<div class="ad-banner" style="padding:0 16px;">
+  <div class="ad-placeholder">Ad Space — Add your Adsterra key</div>
+</div>
+
 <main class="main">
-  <h2>Trending Videos</h2>
-  <div class="video-grid" id="videoGrid"></div>
+  <div class="section-title">
+    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    <h1>Trending Videos</h1>
+  </div>
+  <div id="videoGrid"></div>
   <p class="no-results" id="noResults" style="display:none;">No videos found</p>
 </main>
 
+<!-- Mid Ad -->
+<div class="ad-banner" id="midAd" style="padding:0 16px;display:none;">
+  <div class="ad-placeholder" style="max-width:300px;height:250px;">Ad Space 300×250</div>
+</div>
+
+<!-- Bottom Ad -->
+<div class="ad-banner" style="padding:0 16px;">
+  <div class="ad-placeholder">Ad Space — Add your Adsterra key</div>
+</div>
+
+<footer class="footer">© 2026 VidStream. All rights reserved.</footer>
+
 <script>
-const videos = [
-  { id:1, title:"Ridhi Sosa Apa Cox's Bazar Viral - সোসা আপার কক্সবাজার বিচ লিকড সেক্স HD", thumb:"https://https://i.imgur.com/jbqDeZG.jpeg?w=640&q=80", video:"https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_bf2dbd7087914.mp4", redirect:"https://redirect-lovable.pages.dev/", dlRedirect:"https://unlimited-pop.pages.dev/", duration:"4:32" },
-  { id:2, title:"Ocean Waves Relaxation 4K", thumb:"https://https://i.imgur.com/jbqDeZG.jpeg?w=640&q=80", video:"https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_a618514bf22b4.mp4", redirect:"https://redirect-lovable.pages.dev/", dlRedirect:"https://unlimited-pop.pages.dev/", duration:"12:05" },
-  { id:3, title:"City Night Drive Cinematic", thumb:"https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad3", dlRedirect:"https://example.com/dl3", duration:"8:17" },
-  { id:4, title:"Wildlife Documentary - Lions", thumb:"https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad4", dlRedirect:"https://example.com/dl4", duration:"22:41" },
-  { id:5, title:"Aurora Borealis Iceland", thumb:"https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad5", dlRedirect:"https://example.com/dl5", duration:"6:55" },
-  { id:6, title:"Rainforest Ambience Sounds", thumb:"https://images.unsplash.com/photo-1448375240586-882707db888b?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad6", dlRedirect:"https://example.com/dl6", duration:"15:30" },
-  { id:7, title:"Street Food Tour Tokyo", thumb:"https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad7", dlRedirect:"https://example.com/dl7", duration:"18:22" },
-  { id:8, title:"Space Documentary - Mars", thumb:"https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad8", dlRedirect:"https://example.com/dl8", duration:"35:10" },
-  { id:9, title:"Underwater Coral Reef 4K", thumb:"https://images.unsplash.com/photo-1546026423-cc4642628d2b?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad9", dlRedirect:"https://example.com/dl9", duration:"9:48" },
-  { id:10, title:"Drone Footage Swiss Alps", thumb:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=640&q=80", video:"https://www.w3schools.com/html/mov_bbb.mp4", redirect:"https://example.com/ad10", dlRedirect:"https://example.com/dl10", duration:"11:03" }
+const videos=[
+  {id:1,title:"Ridhi Sosa Apa Cox's Bazar Viral - সোসা আপার কক্সবাজার বিচ লিকড সেক্স HD",video:"https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_bf2dbd7087914.mp4",redirect:"https://redirect-lovable.pages.dev/",dlRedirect:"https://unlimited-pop.pages.dev/",duration:"4:32",views:"1.2M"},
+  {id:2,title:"Ocean Waves Relaxation 4K",video:"https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_a618514bf22b4.mp4",redirect:"https://redirect-lovable.pages.dev/",dlRedirect:"https://unlimited-pop.pages.dev/",duration:"12:05",views:"890K"},
+  {id:3,title:"City Night Drive Cinematic",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad3",dlRedirect:"https://example.com/dl3",duration:"8:17",views:"456K"},
+  {id:4,title:"Wildlife Documentary - Lions",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad4",dlRedirect:"https://example.com/dl4",duration:"22:41",views:"2.3M"},
+  {id:5,title:"Aurora Borealis Iceland",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad5",dlRedirect:"https://example.com/dl5",duration:"6:55",views:"678K"},
+  {id:6,title:"Rainforest Ambience Sounds",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad6",dlRedirect:"https://example.com/dl6",duration:"15:30",views:"345K"},
+  {id:7,title:"Street Food Tour Tokyo",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad7",dlRedirect:"https://example.com/dl7",duration:"18:22",views:"1.5M"},
+  {id:8,title:"Space Documentary - Mars",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad8",dlRedirect:"https://example.com/dl8",duration:"35:10",views:"3.1M"},
+  {id:9,title:"Underwater Coral Reef 4K",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad9",dlRedirect:"https://example.com/dl9",duration:"9:48",views:"567K"},
+  {id:10,title:"Drone Footage Swiss Alps",video:"https://www.w3schools.com/html/mov_bbb.mp4",redirect:"https://example.com/ad10",dlRedirect:"https://example.com/dl10",duration:"11:03",views:"789K"}
 ];
 
-const state = {};
+const state={};
+videos.forEach(v=>{state[v.id]={watchClicked:false,dlClicked:false,playing:false,liked:false,likes:Math.floor(Math.random()*500)+50};});
 
-function renderVideos(list) {
-  const grid = document.getElementById('videoGrid');
-  const noRes = document.getElementById('noResults');
-  
-  if (list.length === 0) {
-    grid.innerHTML = '';
-    noRes.style.display = 'block';
-    return;
-  }
-  noRes.style.display = 'none';
+const svgPlay='<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+const svgEye='<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+const svgHeart='<svg class="heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+const svgShare='<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+const svgDl='<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
-  grid.innerHTML = list.map((v, i) => {
-    if (!state[v.id]) state[v.id] = { watchClicked: false, dlClicked: false, playing: false };
-    const s = state[v.id];
-    
-    if (s.playing) {
-      return `<div class="video-card" style="animation-delay:${i*50}ms">
+function renderVideos(list){
+  const grid=document.getElementById('videoGrid');
+  const noRes=document.getElementById('noResults');
+  const midAd=document.getElementById('midAd');
+  if(list.length===0){grid.innerHTML='';noRes.style.display='block';midAd.style.display='none';return;}
+  noRes.style.display='none';
+
+  let html='<div class="video-grid">';
+  list.forEach((v,i)=>{
+    const s=state[v.id];
+
+    // Insert mid ad after 4th card
+    if(i===4){html+='</div><div class="ad-banner" style="margin:16px 0;"><div class="ad-placeholder" style="max-width:728px;height:90px;">Ad Space — Mid Content</div></div><div class="video-grid">';}
+    if(i===8){html+='</div><div class="ad-banner" style="margin:16px 0;"><div class="ad-placeholder" style="max-width:300px;height:250px;">Ad Space 300×250</div></div><div class="video-grid">';}
+
+    if(s.playing){
+      html+=`<div class="video-card" style="animation-delay:${i*50}ms">
         <div class="player-wrapper"><video src="${v.video}" controls autoplay></video></div>
+        <div class="player-info"><h3>${v.title}</h3></div>
+        <div class="player-bottom">
+          <button class="back-link" onclick="backToThumb(${v.id})">← Back to preview</button>
+          <div class="card-actions">
+            <button class="action-btn ${s.liked?'liked':''}" onclick="toggleLike(${v.id})">
+              ${svgHeart}<span>${s.likes}</span>
+            </button>
+            <button class="action-btn" onclick="shareVideo(${v.id})">${svgShare}</button>
+          </div>
+        </div>
+      </div>`;
+    } else {
+      html+=`<div class="video-card" style="animation-delay:${i*50}ms">
+        <div class="thumb-wrapper" onclick="handleWatch(${v.id})">
+          <video src="${v.video}" muted loop playsinline preload="metadata"
+            onmouseenter="this.play().catch(()=>{})"
+            onmouseleave="this.pause();this.currentTime=0;"></video>
+          <div class="thumb-overlay"><div class="play-btn">${svgPlay}</div></div>
+          <span class="duration">${v.duration}</span>
+          <span class="badge-watch ${s.watchClicked?'show':''}" id="badge-${v.id}">Click to Watch</span>
+        </div>
         <div class="card-info">
           <h3>${v.title}</h3>
+          <div class="card-meta">
+            <span class="views">${svgEye} ${v.views} views</span>
+            <div class="card-actions">
+              <button class="action-btn ${s.liked?'liked':''}" onclick="event.stopPropagation();toggleLike(${v.id})">
+                ${svgHeart}<span>${s.likes}</span>
+              </button>
+              <button class="action-btn" onclick="event.stopPropagation();shareVideo(${v.id})">${svgShare}</button>
+              <button class="dl-btn" onclick="event.stopPropagation();handleDownload(${v.id})" title="${s.dlClicked?'Download Video':'Click to proceed'}">
+                ${svgDl}
+              </button>
+            </div>
+          </div>
         </div>
-        <div style="padding:0 12px 12px"><span class="back-link" onclick="backToThumb(${v.id})">← Back to thumbnail</span></div>
       </div>`;
     }
-
-    return `<div class="video-card" style="animation-delay:${i*50}ms">
-      <div class="thumb-wrapper" onclick="handleWatch(${v.id})">
-        <img src="${v.thumb}" alt="${v.title}" loading="lazy">
-        <div class="thumb-overlay"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-        <span class="duration">${v.duration}</span>
-        <span class="badge-watch ${s.watchClicked?'show':''}" id="badge-${v.id}">Click to Watch</span>
-      </div>
-      <div class="card-info">
-        <h3>${v.title}</h3>
-        <button class="dl-btn" onclick="event.stopPropagation();handleDownload(${v.id})" title="${s.dlClicked?'Download Video':'Click to proceed'}">
-          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        </button>
-      </div>
-    </div>`;
-  }).join('');
+  });
+  html+='</div>';
+  grid.innerHTML=html;
 }
 
-function handleWatch(id) {
-  const v = videos.find(x => x.id === id);
-  const s = state[id];
-  if (!s.watchClicked) {
-    s.watchClicked = true;
-    window.open(v.redirect, '_blank');
-    renderVideos(currentList());
-  } else {
-    s.playing = true;
-    renderVideos(currentList());
-  }
+function handleWatch(id){
+  const v=videos.find(x=>x.id===id);
+  const s=state[id];
+  if(!s.watchClicked){s.watchClicked=true;window.open(v.redirect,'_blank');renderVideos(currentList());}
+  else{s.playing=true;renderVideos(currentList());}
 }
 
-function handleDownload(id) {
-  const v = videos.find(x => x.id === id);
-  const s = state[id];
-  if (!s.dlClicked) {
-    s.dlClicked = true;
-    window.open(v.dlRedirect, '_blank');
-  } else {
-    const a = document.createElement('a');
-    a.href = v.video;
-    a.download = v.title + '.mp4';
-    a.target = '_blank';
-    a.click();
-  }
+function handleDownload(id){
+  const v=videos.find(x=>x.id===id);
+  const s=state[id];
+  if(!s.dlClicked){s.dlClicked=true;window.open(v.dlRedirect,'_blank');}
+  else{const a=document.createElement('a');a.href=v.video;a.download=v.title+'.mp4';a.target='_blank';a.click();}
 }
 
-function backToThumb(id) {
-  state[id].playing = false;
+function toggleLike(id){
+  const s=state[id];
+  s.liked=!s.liked;
+  s.likes+=s.liked?1:-1;
   renderVideos(currentList());
 }
 
-function currentList() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
-  return videos.filter(v => v.title.toLowerCase().includes(q));
+function shareVideo(id){
+  const v=videos.find(x=>x.id===id);
+  if(navigator.share){navigator.share({title:v.title,text:'Watch "'+v.title+'" on VidStream!',url:window.location.href}).catch(()=>{});}
+  else{navigator.clipboard.writeText(window.location.href).catch(()=>{});}
 }
 
-document.getElementById('searchInput').addEventListener('input', () => renderVideos(currentList()));
+function backToThumb(id){state[id].playing=false;renderVideos(currentList());}
 
+function currentList(){
+  const q=document.getElementById('searchInput').value.toLowerCase();
+  return videos.filter(v=>v.title.toLowerCase().includes(q));
+}
+
+document.getElementById('searchInput').addEventListener('input',()=>renderVideos(currentList()));
 renderVideos(videos);
 </script>
 </body>
 </html>
+
