@@ -13,7 +13,7 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 
 .header{position:sticky;top:0;z-index:50;background:rgba(15,17,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:12px 16px;}
 .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;}
-.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;text-decoration:none;}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;text-decoration:none;border:none;background:none;color:inherit;}
 .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#e53935,#ff6f43);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 15px rgba(229,57,53,0.3);}
 .logo-icon svg{width:18px;height:18px;fill:white;}
 .logo-text{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#f5f5f5;}
@@ -47,16 +47,27 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
 .thumb-wrapper{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:#111;}
-.thumb-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.thumb-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s, filter 0.5s;}
 .video-card:hover .thumb-wrapper video{transform:scale(1.05);}
+.thumb-wrapper video.blurred{filter:blur(12px) brightness(0.5);transform:scale(1.1);}
 
 .thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,17,23,0.7),transparent);display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity 0.3s;pointer-events:none;}
-.thumb-overlay.hidden{opacity:0;pointer-events:none;}
+.thumb-overlay.hidden{opacity:0;}
 
 .play-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#e53935,#ff6f43);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(229,57,53,0.4);}
 .play-btn svg{width:22px;height:22px;fill:white;margin-left:2px;}
 
 .duration{position:absolute;bottom:8px;right:8px;background:rgba(15,17,23,0.9);color:#f5f5f5;font-size:11px;padding:2px 8px;border-radius:6px;font-weight:500;backdrop-filter:blur(4px);}
+
+/* ===== WATCH FULL HD OVERLAY ===== */
+.fullhd-overlay{position:absolute;inset:0;background:rgba(15,17,23,0.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;pointer-events:none;transition:opacity 0.4s;z-index:10;backdrop-filter:blur(4px);}
+.fullhd-overlay.show{opacity:1;pointer-events:auto;}
+.fullhd-overlay .lock-icon{width:40px;height:40px;background:rgba(229,57,53,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.fullhd-overlay .lock-icon svg{width:20px;height:20px;stroke:#e53935;fill:none;stroke-width:2;}
+.fullhd-overlay p{font-size:12px;color:#999;text-align:center;max-width:180px;}
+.fullhd-btn{padding:10px 24px;border:none;border-radius:50px;background:linear-gradient(135deg,#e53935,#ff6f43);color:white;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 20px rgba(229,57,53,0.4);transition:all 0.3s;font-family:'DM Sans',sans-serif;animation:pulse 2s infinite;}
+.fullhd-btn:hover{transform:scale(1.05);box-shadow:0 6px 25px rgba(229,57,53,0.5);}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(229,57,53,0.4);}50%{box-shadow:0 4px 30px rgba(229,57,53,0.7);}}
 
 .card-info{padding:12px;}
 .card-info h3{font-size:13px;font-weight:600;color:#f5f5f5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px;}
@@ -77,16 +88,40 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 .dl-btn:hover{background:linear-gradient(135deg,#e53935,#ff6f43);color:white;}
 
 .footer{border-top:1px solid rgba(255,255,255,0.06);padding:20px;text-align:center;color:#444;font-size:12px;margin-top:20px;}
+
+/* Countdown Modal */
+.countdown-modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(8px);}
+.countdown-modal.show{opacity:1;pointer-events:auto;}
+.countdown-box{background:#1a1d27;border-radius:16px;padding:32px 24px;text-align:center;max-width:320px;width:90%;border:1px solid rgba(229,57,53,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.countdown-box h3{font-size:18px;font-weight:700;margin-bottom:8px;}
+.countdown-box p{font-size:13px;color:#888;margin-bottom:20px;}
+.countdown-num{font-size:48px;font-weight:700;color:#e53935;font-family:'Space Grotesk',sans-serif;margin-bottom:16px;text-shadow:0 0 30px rgba(229,57,53,0.5);}
+.countdown-bar{width:100%;height:4px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;margin-bottom:20px;}
+.countdown-bar-fill{height:100%;background:linear-gradient(90deg,#e53935,#ff6f43);border-radius:4px;transition:width 1s linear;}
+.countdown-go{padding:12px 32px;border:none;border-radius:50px;background:linear-gradient(135deg,#e53935,#ff6f43);color:white;font-size:14px;font-weight:600;cursor:pointer;opacity:0.3;pointer-events:none;transition:all 0.3s;font-family:'DM Sans',sans-serif;}
+.countdown-go.ready{opacity:1;pointer-events:auto;animation:pulse 1.5s infinite;}
+.countdown-go.ready:hover{transform:scale(1.05);}
 </style>
 </head>
 <body>
 
+<!-- Countdown Modal -->
+<div class="countdown-modal" id="countdownModal">
+  <div class="countdown-box">
+    <h3>⏳ Please Wait...</h3>
+    <p>Your content is loading</p>
+    <div class="countdown-num" id="countdownNum">5</div>
+    <div class="countdown-bar"><div class="countdown-bar-fill" id="countdownBar" style="width:0%"></div></div>
+    <button class="countdown-go" id="countdownGo" onclick="goToLink()">▶ Continue to Content</button>
+  </div>
+</div>
+
 <header class="header">
   <div class="header-inner">
-    <a class="logo" onclick="switchCategory('trending')">
+    <button class="logo" onclick="switchCategory('trending')">
       <div class="logo-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
       <div class="logo-text">Vid<span>Stream</span></div>
-    </a>
+    </button>
     <div class="search-box">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="searchInput" placeholder="Search videos...">
@@ -110,6 +145,16 @@ h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
 <footer class="footer">&copy; 2026 VidStream. All rights reserved.</footer>
 
 <script>
+// =====================================================
+// ★★★ YOUR ADSTERRA SMART LINKS — CHANGE THESE ★★★
+// =====================================================
+var SMART_LINK = "https://www.profitablecpmratenetwork.com/uvzsmhf6s1?key=3620a4de4c47107c53adf379f9659784";
+var DL_SMART_LINK = "https://www.profitablecpmratenetwork.com/wfgse0gu0?key=dfa595cebf5450be98481dd0467d958f";
+// =====================================================
+
+var BLUR_DELAY = 3000; // 3 seconds then blur
+var COUNTDOWN_SEC = 5;
+
 var categories=[
   {id:"trending",name:"আরোহী মিমের ভিডিও"},
   {id:"entertainment",name:"নুজহাতের ভিডিও"},
@@ -120,8 +165,6 @@ var categories=[
   {id:"technology",name:"probar video"}
 ];
 
-var baseRedirect="https://viralvideo334.blogspot.com/";
-var baseDlRedirect="https://unlimited-pop.pages.dev/";
 var vSrc=[
   "https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_bf2dbd7087914.mp4",
   "https://raw.githubusercontent.com/johnsmithdwds/Private-videos/main/ViralLink_a618514bf22b4.mp4",
@@ -131,7 +174,7 @@ var durs=["4:32","12:05","8:17","22:41","6:55","15:30","18:22","35:10","9:48","1
 var vws=["1.2M","890K","456K","2.3M","678K","345K","1.5M","3.1M","567K","789K","1.1M","234K"];
 
 var videoTitles={
-  trending:["Ridhi Sosa Apa Cox's Bazar Viral - videos HD","নুজহাতের ভাইরাল ভিডিও","আরোহী মিম ভাইরাল ভিডিও","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
+  trending:["Ridhi Sosa Apa Cox's Bazar Viral - videos HD","স্কুল ছাত্রীর ভিডিও","আরোহী মিম ভাইরাল ভিডিও","Wildlife Documentary - Lions","Aurora Borealis Iceland","Rainforest Ambience Sounds","Street Food Tour Tokyo","Space Documentary - Mars","Underwater Coral Reef 4K","Drone Footage Swiss Alps","Mountain Hiking Adventure","Desert Storm Timelapse"],
   entertainment:["Best Comedy Clips 2026","Movie Trailer Mashup","Celebrity Interview Highlights","Stand-Up Comedy Special","Behind The Scenes Blockbuster","Animated Short Film","Drama Series Recap","Reality Show Best Moments","Award Show Highlights","Viral TikTok Compilation","Prank Wars Episode 5","Magic Show Revealed"],
   music:["Top Hits Playlist 2026","Live Concert 4K","Guitar Tutorial Beginner","EDM Festival Highlights","Classical Piano Performance","Rap Freestyle Battle","K-Pop Dance Practice","Acoustic Cover Mashup","Beat Making Tutorial","Music Video Behind Scenes","Jazz Night Live","Vocal Training Tips"],
   gaming:["GTA 6 Gameplay Leaked","Minecraft Mega Build","Fortnite Pro Tips","Elden Ring Boss Fight","FIFA 26 Best Goals","Call of Duty Warzone","Pokemon New Generation","Speedrun World Record","Gaming Setup Tour","Esports Championship Final","Roblox Adventure Map","VR Gaming Experience"],
@@ -143,7 +186,7 @@ var videoTitles={
 function genVideos(catId,startId){
   var titles=videoTitles[catId]||videoTitles.trending;
   return titles.map(function(t,i){
-    return {id:startId+i,title:t,video:vSrc[i%vSrc.length],redirect:baseRedirect,dlRedirect:baseDlRedirect,duration:durs[i%durs.length],views:vws[i%vws.length],category:catId};
+    return {id:startId+i,title:t,video:vSrc[i%vSrc.length],duration:durs[i%durs.length],views:vws[i%vws.length],category:catId};
   });
 }
 
@@ -152,21 +195,26 @@ categories.forEach(function(c,idx){allVideos[c.id]=genVideos(c.id,idx*100+1);});
 
 var currentCat="trending";
 var state={};
+var blurTimers={};
+
 function initState(){
   state={};
+  blurTimers={};
   Object.keys(allVideos).forEach(function(cat){
     allVideos[cat].forEach(function(v){
-      state[v.id]={playing:false,dlClicked:false,liked:false,likes:Math.floor(Math.random()*500)+50};
+      state[v.id]={playing:false,blurred:false,dlClicked:false,liked:false,likes:Math.floor(Math.random()*500)+50};
     });
   });
 }
 initState();
 
+// SVG icons
 var svgPlay='<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
 var svgEye='<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
 var svgHeart='<svg class="heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
 var svgShare='<svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
 var svgDl='<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+var svgLock='<svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
 
 function renderCatNav(){
   var nav=document.getElementById('catNav');
@@ -176,6 +224,8 @@ function renderCatNav(){
 }
 
 function switchCategory(catId){
+  // Clear all blur timers
+  Object.keys(blurTimers).forEach(function(k){clearTimeout(blurTimers[k]);});
   currentCat=catId;
   var cat=categories.find(function(c){return c.id===catId;});
   document.getElementById('pageTitle').textContent=cat?cat.name:'Videos';
@@ -195,9 +245,15 @@ function renderVideos(list){
     var s=state[v.id];
     html+='<div class="video-card" style="animation-delay:'+i*50+'ms">';
     html+='<div class="thumb-wrapper" data-vid="'+v.id+'">';
-    html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata"></video>';
+    html+='<video src="'+v.video+'#t=0.5" muted loop playsinline preload="metadata" class="'+(s.blurred?'blurred':'')+'"></video>';
     html+='<div class="thumb-overlay'+(s.playing?' hidden':'')+'"><div class="play-btn">'+svgPlay+'</div></div>';
     html+='<span class="duration">'+v.duration+'</span>';
+    // Watch Full HD overlay (shows when blurred)
+    html+='<div class="fullhd-overlay'+(s.blurred?' show':'')+'" data-fullhd="'+v.id+'">';
+    html+='<div class="lock-icon">'+svgLock+'</div>';
+    html+='<p>ভিডিওটি দেখতে নিচে ক্লিক করুন</p>';
+    html+='<button class="fullhd-btn" onclick="event.stopPropagation();openSmartLink()">▶ Watch Full HD Video</button>';
+    html+='</div>';
     html+='</div>';
     html+='<div class="card-info"><h3>'+v.title+'</h3>';
     html+='<div class="card-meta">';
@@ -211,6 +267,7 @@ function renderVideos(list){
   html+='</div>';
   grid.innerHTML=html;
 
+  // Attach click handlers
   document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
     var vid=parseInt(wrapper.getAttribute('data-vid'));
     wrapper.addEventListener('click',function(e){
@@ -220,6 +277,7 @@ function renderVideos(list){
     },{passive:false});
   });
 
+  // Resume playing videos
   document.querySelectorAll('.thumb-wrapper').forEach(function(wrapper){
     var vid=parseInt(wrapper.getAttribute('data-vid'));
     if(state[vid]&&state[vid].playing){
@@ -230,29 +288,81 @@ function renderVideos(list){
 }
 
 function handleCardClick(id,wrapper){
-  var v=findVideo(id);
   var s=state[id];
-  if(!v||!s)return;
+  if(!s)return;
+
+  // If blurred, the fullhd overlay button handles it
+  if(s.blurred)return;
+
   if(!s.playing){
+    // First click: play video, then auto-blur after 3 seconds
     s.playing=true;
     var videoEl=wrapper.querySelector('video');
     var overlay=wrapper.querySelector('.thumb-overlay');
     if(overlay)overlay.classList.add('hidden');
-    if(videoEl){
-      videoEl.play().catch(function(){});
-    }
-  } else {
-    window.open(v.redirect,'_blank');
+    if(videoEl){videoEl.play().catch(function(){});}
+
+    // Auto blur after BLUR_DELAY
+    blurTimers[id]=setTimeout(function(){
+      s.blurred=true;
+      var v=videoEl;
+      if(v)v.classList.add('blurred');
+      var fhd=wrapper.querySelector('[data-fullhd="'+id+'"]');
+      if(fhd)fhd.classList.add('show');
+    },BLUR_DELAY);
   }
 }
 
+// ===== SMART LINK WITH COUNTDOWN =====
+var pendingLink="";
+
+function openSmartLink(){
+  pendingLink=SMART_LINK;
+  showCountdown();
+}
+
+function showCountdown(){
+  var modal=document.getElementById('countdownModal');
+  var numEl=document.getElementById('countdownNum');
+  var barEl=document.getElementById('countdownBar');
+  var goBtn=document.getElementById('countdownGo');
+
+  modal.classList.add('show');
+  goBtn.classList.remove('ready');
+  var sec=COUNTDOWN_SEC;
+  numEl.textContent=sec;
+  barEl.style.width='0%';
+
+  var iv=setInterval(function(){
+    sec--;
+    numEl.textContent=sec;
+    barEl.style.width=(((COUNTDOWN_SEC-sec)/COUNTDOWN_SEC)*100)+'%';
+    if(sec<=0){
+      clearInterval(iv);
+      barEl.style.width='100%';
+      numEl.textContent='✓';
+      goBtn.classList.add('ready');
+    }
+  },1000);
+}
+
+function goToLink(){
+  document.getElementById('countdownModal').classList.remove('show');
+  if(pendingLink){
+    window.open(pendingLink,'_blank');
+    pendingLink="";
+  }
+}
+
+// ===== DOWNLOAD: 1st click = smart link, 2nd click = real download =====
 function handleDownload(id){
   var v=findVideo(id);
   var s=state[id];
   if(!v||!s)return;
   if(!s.dlClicked){
     s.dlClicked=true;
-    window.open(v.dlRedirect,'_blank');
+    pendingLink=DL_SMART_LINK;
+    showCountdown();
   } else {
     var a=document.createElement('a');a.href=v.video;a.download=v.title+'.mp4';a.target='_blank';a.click();
   }
@@ -292,4 +402,3 @@ renderVideos(allVideos[currentCat]);
 </script>
 </body>
 </html>
-
